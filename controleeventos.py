@@ -104,11 +104,14 @@ def inscrever_aluno():
         return
     
     if len(eventos[nome_evento]['inscritos']) >= eventos[nome_evento]['max_participantes']:
-        print("Que pena! As vagas para este evento estão esgotadas.")
+        print("Que pena! As vagas para este evento estão esgotadas. Tente outro evento.")
         return
 
     nome_aluno = input("Digite seu nome: ").strip().capitalize()
-    
+    if nome_aluno in eventos[nome_evento]['inscritos']:
+        print("Você já está inscrito neste evento.")
+        return
+
     eventos[nome_evento]['inscritos'].append(nome_aluno)
     print(f"Inscrição de {nome_aluno} no evento {nome_evento} realizada!")
 
